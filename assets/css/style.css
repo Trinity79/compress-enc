@@ -1,0 +1,239 @@
+* {
+	margin: 0;
+	padding: 0;
+  }
+  
+  html {
+	overflow: hidden;
+  }
+  
+  a, a:visited {
+	outline: none;
+	color: #0077B6; /* Dark Blue */
+  }
+  
+  a:hover {
+	text-decoration: underline;
+  }
+  
+  section, footer, header, aside {
+	display: block;
+  }
+  
+  /* The main page elements */
+  
+  body {
+	font: 15px/1.3 'Raleway', sans-serif;
+	color: #333; /* Dark Gray */
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: hidden;
+  }
+  
+  #stage {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: top 0.4s;
+  }
+  
+  #stage > div { /* The step divs */
+	height: 100%;
+	position: relative;
+  }
+  
+  #stage h1 {
+	font-weight: normal;
+	font-size: 48px;
+	text-align: center;
+	color: #333; /* Dark Gray */
+	margin-bottom: 60px;
+  }
+  
+  #stage h2 {
+	font-weight: normal;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: -40px 0 45px;
+	font-style: italic;
+  }
+  
+  .content {
+	position: absolute;
+	text-align: center;
+	left: 0;
+	top: 50%;
+	width: 100%;
+  }
+  
+  .content input[type=file] {
+	display: none;
+  }
+  
+  a.back {
+	width: 32px;
+	height: 32px;
+	background: url('../img/icons.svg') no-repeat -192px 0;
+	position: absolute;
+	cursor: pointer;
+	top: 50px;
+	left: 50%;
+	z-index: 10;
+	opacity: 0.8;
+	margin-left: -16px;
+	display: none;
+  }
+  
+  a.back:hover {
+	opacity: 1;
+  }
+  
+  /* Conditional classes */
+  
+  [class*="if-"] {
+	display: none;
+  }
+  
+  body.encrypt .if-encrypt {
+	display: block;
+  }
+  
+  body.decrypt .if-decrypt {
+	display: block;
+  }
+  
+  .button {
+	width: 240px;
+	height: 70px;
+	text-align: center;
+	text-decoration: none !important;
+	color: #fff !important;
+	text-transform: uppercase;
+	font-weight: bold;
+	border-radius: 1px;
+	display: block;
+	line-height: 70px;
+	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+	cursor: pointer;
+	font-size: 18px;
+	margin: 10px auto;
+	opacity: 0.9;
+  }
+  
+  .button:hover {
+	opacity: 1;
+  }
+  
+  .button::before {
+	content: '';
+	width: 32px;
+	height: 32px;
+	vertical-align: middle;
+	padding-right: 13px;
+  }
+  
+  .button.green {
+	background-color: #2A9D8F; /* Teal */
+  }
+  
+  .button.magenta {
+	background-color: #D62828; /* Red */
+  }
+  
+  .button.blue {
+	background-color: #0066CC; /* Blue */
+  }
+  
+  .button.red {
+	background-color: #FF5722; /* Orange */
+  }
+  
+  /* Styles for specific buttons */
+  
+  .button.browse {
+	width: 180px;
+  }
+  
+  .button.process {
+	width: 190px;
+  }
+  
+  .button.download {
+	width: 216px;
+  }
+  
+  .button.encrypt::before {
+	background-position: 0 0;
+  }
+  
+  .button.decrypt::before {
+	background-position: -96px 0;
+  }
+  
+  .button.browse::before {
+	background-position: -240px 0;
+  }
+  
+  .button.process::before {
+	background-position: -142px 0;
+  }
+  
+  .button.download:before {
+	background-position: -48px 0;
+  }
+  
+  #step1 {
+	background-color: #75C0D1; /* Light Blue */
+  }
+  
+  body.encrypt #step2 {
+	background-color: #9AD58C; /* Green */
+  }
+  
+  body.decrypt #step2 {
+	background-color: #E7A8D1; /* Light Pink */
+  }
+  
+  #step3 {
+	background-color: #D5D788; /* Yellow */
+  }
+  
+  #step3 input[type=password] {
+	background-color: #fff;
+	border: none;
+	padding: 8px 18px;
+	line-height: 1;
+	font: inherit;
+	display: inline-block;
+	outline: none;
+	width: 400px;
+	margin-bottom: 18px;
+	border-radius: 2px;
+	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.05);
+	font-size: 36px;
+	color: #333; /* Dark Gray */
+  }
+  
+  #step4 {
+	background-color: #AA8CD8; /* Purple */
+  }
+  
+  #step1 .content {
+	margin-top: -140px;
+  }
+  
+  #step2 .content {
+	margin-top: -110px;
+  }
+  
+  #step3 .content {
+	margin-top: -157px;
+  }
+  
+  #step4 .content {
+	margin-top: -100px;
+  }
+  
