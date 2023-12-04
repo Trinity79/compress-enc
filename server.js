@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
     let filePath = '.' + req.url;
     if (filePath === './') {
-        filePath = './index.html';
+        filePath = './index1.html';
     }
 
     const extname = path.extname(filePath);
@@ -24,10 +24,8 @@ const server = http.createServer((req, res) => {
     fs.readFile(filePath, (err, content) => {
         if (err) {
             if (err.code === 'ENOENT') {
-                fs.readFile('./404.html', (err, content) => {
-                    res.writeHead(404, { 'Content-Type': 'text/html' });
-                    res.end(content, 'utf-8');
-                });
+                res.writeHead(404, { 'Content-Type': 'text/html' });
+                res.end('<h1>404 Not Found</h1>');
             } else {
                 res.writeHead(500);
                 res.end(`Server Error: ${err.code}`);
