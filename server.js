@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const server = http.createServer((req, res) => {
     let filePath = '.' + req.url;
     if (filePath === './') {
-        filePath = './index1.html';
+        filePath = './index.html';
     }
 
     const extname = path.extname(filePath);
