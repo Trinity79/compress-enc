@@ -1,18 +1,44 @@
-const express = require('express');
-const app = express();
+const http = require('http');
+const fs = require('fs');
 const path = require('path');
 
-// Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname)));
-
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// Use process.env.PORT for Azure's port configuration
 const PORT = process.env.PORT || 3000;
 
-// Start the server on the provided port
-app.listen(PORT, function() {
-    console.log(`App listening on port ${PORT}!`);
+const server = http.createServer((req, res) => {
+    let filePath = '.' + req.url;
+    if (filePath === './') {
+        filePath = './index.html';
+    }
+
+    const extname = path.extname(filePath);
+    let contentType = 'text/html';
+    switch (extname) {
+        case '.js':
+            contentType = 'text/javascript';
+            break;
+        case '.css':
+            contentType = 'text/css';
+            break;
+    }
+
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            if (err.code === 'ENOENT') {
+                fs.readFile('./404.html', (err, content) => {
+                    res.writeHead(404, { 'Content-Type': 'text/html' });
+                    res.end(content, 'utf-8');
+                });
+            } else {
+                res.writeHead(500);
+                res.end(`Server Error: ${err.code}`);
+            }
+        } else {
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(content, 'utf-8');
+        }
+    });
+});
+
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
