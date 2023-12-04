@@ -9,7 +9,10 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Start the server on port 3000
-app.listen(3000, function() {
-    console.log('App listening on port 3000!');
+// Use process.env.PORT for Azure's port configuration
+const PORT = process.env.PORT || 3000;
+
+// Start the server on the provided port
+app.listen(PORT, function() {
+    console.log(`App listening on port ${PORT}!`);
 });
